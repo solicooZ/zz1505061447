@@ -1,0 +1,491 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>next主题关于不蒜子不显示计数的思考 | solicoo的博客</title><meta name="keywords" content="不蒜子"><meta name="author" content=""><meta name="copyright" content=""><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="环境node版本:：v15.6.0 hexo-cli:：4.2.0 next版本：7.8.0 问题描述&amp;emsp;&amp;emsp; 近期写博客，用了不蒜子来进行网页总访问量的统计，我使用的是next主题，将配置文件设置好之后，几乎不显示统计数，为什么说是几乎不显示，因为刷新多次后，有一定的概率是可以显示的，具体原因不详。 问题分析主题config.yml设置 &amp;emsp;&amp;emsp;如图，如此设置，p">
+<meta property="og:type" content="article">
+<meta property="og:title" content="next主题关于不蒜子不显示计数的思考">
+<meta property="og:url" content="http://solicoo.gitee.io/ning-blog/2021/04/22/%E5%85%B3%E4%BA%8E%E4%B8%8D%E8%92%9C%E5%AD%90%E4%B8%8D%E6%98%BE%E7%A4%BA%E8%AE%A1%E6%95%B0%E7%9A%84%E6%80%9D%E8%80%83/index.html">
+<meta property="og:site_name" content="solicoo的博客">
+<meta property="og:description" content="环境node版本:：v15.6.0 hexo-cli:：4.2.0 next版本：7.8.0 问题描述&amp;emsp;&amp;emsp; 近期写博客，用了不蒜子来进行网页总访问量的统计，我使用的是next主题，将配置文件设置好之后，几乎不显示统计数，为什么说是几乎不显示，因为刷新多次后，有一定的概率是可以显示的，具体原因不详。 问题分析主题config.yml设置 &amp;emsp;&amp;emsp;如图，如此设置，p">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://solicoo.gitee.io/ning-blog/images/003.jpg">
+<meta property="article:published_time" content="2021-04-22T05:45:30.000Z">
+<meta property="article:modified_time" content="2021-04-22T12:23:47.932Z">
+<meta property="article:tag" content="不蒜子">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://solicoo.gitee.io/ning-blog/images/003.jpg"><link rel="shortcut icon" href="/ning-blog/images/favicon.ico"><link rel="canonical" href="http://solicoo.gitee.io/ning-blog/2021/04/22/%E5%85%B3%E4%BA%8E%E4%B8%8D%E8%92%9C%E5%AD%90%E4%B8%8D%E6%98%BE%E7%A4%BA%E8%AE%A1%E6%95%B0%E7%9A%84%E6%80%9D%E8%80%83/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//hm.baidu.com"/><link rel="preconnect" href="//fonts.googleapis.com" crossorigin=""/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/ning-blog/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.10.5/dist/instantsearch.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/instantsearch.js@2.10.5/dist/instantsearch.min.js" defer></script><script async="async" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><script>(adsbygoogle = window.adsbygoogle || []).push({
+  google_ad_client: '',
+  enable_page_level_ads: 'true'
+});</script><script>var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?cb60fa819675f6270240d20c586a9f19";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Titillium+Web&amp;display=swap" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/ning-blog/',
+  algolia: {"appId":"WTY3DHT8TO","apiKey":"f1ab1417aae815ffc5567e46f1ca7b0e","indexName":"myblog","hits":{"per_page":6},"languages":{"input_placeholder":"搜索文章","hits_empty":"找不到您查询的内容：${query}","hits_stats":"找到 ${hits} 条结果，用时 ${time} 毫秒"}},
+  localSearch: undefined,
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"limitCount":50,"languages":{"author":"作者: ","link":"链接: ","source":"来源: solicoo的博客","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"你已切换为繁体","cht_to_chs":"你已切换为简体","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#49b1f5","bgDark":"#121212","position":"bottom-left"},
+  source: {
+    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js',
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+    },
+    fancybox: {
+      js: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isanchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = { 
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2021-04-22 20:23:47'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    })(window)</script><link rel="stylesheet" href="css/iconfont.css"><!-- hexo injector head_end start --><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Zfour/Butterfly-card-history/baiduhistory/css/main.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Zfour/hexo-electric-clock@1.0.6/clock.css"><!-- hexo injector head_end end --><meta name="generator" content="Hexo 5.4.0"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="author-avatar"><img class="avatar-img" src="/ning-blog/images/avatar.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/ning-blog/archives/"><div class="headline">文章</div><div class="length-num">5</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/ning-blog/tags/"><div class="headline">标签</div><div class="length-num">5</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/ning-blog/categories/"><div class="headline">分类</div><div class="length-num">4</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/ning-blog/"><i class="fa-fw fa fa-home fa-spin"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/ning-blog/shuoshuo/"><i class="fa-fw fa fa-sticky-note fa-spin"></i><span> 说点啥</span></a></div><div class="menus_item"><a class="site-page" href="/ning-blog/music/"><i class="fa-fw fa fa-music fa-spin"></i><span> Music</span></a></div><div class="menus_item"><a class="site-page" href="/ning-blog/Message-Board/"><i class="fa-fw fa fa-book fa-spin"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/ning-blog/photo/"><i class="fa-fw fa fa-images fa-spin"></i><span> 壁纸收藏</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-list fa-spin"></i><span> 清单</span><i class="fas fa-chevron-down expand hide"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/ning-blog/archives/"><i class="fa-fw fa fa-archive fa-spin"></i><span> 归档</span></a></li><li><a class="site-page child" href="/ning-blog/tags/"><i class="fa-fw fa fa-tags fa-spin"></i><span> 标签</span></a></li><li><a class="site-page child" href="/ning-blog/categories/"><i class="fa-fw fa fa-folder-open fa-spin"></i><span> 分类</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/ning-blog/link/"><i class="fa-fw fa fa-link fa-spin"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/ning-blog/about-me/"><i class="fa-fw fa fa-heart fa-spin"></i><span> 关于我</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/ning-blog/images/003.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/ning-blog/">solicoo的博客</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/ning-blog/"><i class="fa-fw fa fa-home fa-spin"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/ning-blog/shuoshuo/"><i class="fa-fw fa fa-sticky-note fa-spin"></i><span> 说点啥</span></a></div><div class="menus_item"><a class="site-page" href="/ning-blog/music/"><i class="fa-fw fa fa-music fa-spin"></i><span> Music</span></a></div><div class="menus_item"><a class="site-page" href="/ning-blog/Message-Board/"><i class="fa-fw fa fa-book fa-spin"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/ning-blog/photo/"><i class="fa-fw fa fa-images fa-spin"></i><span> 壁纸收藏</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-list fa-spin"></i><span> 清单</span><i class="fas fa-chevron-down expand hide"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/ning-blog/archives/"><i class="fa-fw fa fa-archive fa-spin"></i><span> 归档</span></a></li><li><a class="site-page child" href="/ning-blog/tags/"><i class="fa-fw fa fa-tags fa-spin"></i><span> 标签</span></a></li><li><a class="site-page child" href="/ning-blog/categories/"><i class="fa-fw fa fa-folder-open fa-spin"></i><span> 分类</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/ning-blog/link/"><i class="fa-fw fa fa-link fa-spin"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/ning-blog/about-me/"><i class="fa-fw fa fa-heart fa-spin"></i><span> 关于我</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">next主题关于不蒜子不显示计数的思考</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2021-04-22T05:45:30.000Z" title="发表于 2021-04-22 13:45:30">2021-04-22</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2021-04-22T12:23:47.932Z" title="更新于 2021-04-22 20:23:47">2021-04-22</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/ning-blog/categories/%E5%8D%9A%E5%AE%A2%E6%95%99%E7%A8%8B/">博客教程</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">511</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>1分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="next主题关于不蒜子不显示计数的思考"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h3 id="环境"><a href="#环境" class="headerlink" title="环境"></a>环境</h3><p>node版本:：v15.6.0</p>
+<p>hexo-cli:：4.2.0</p>
+<p>next版本：7.8.0</p>
+<h3 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h3><p>&emsp;&emsp; 近期写博客，用了不蒜子来进行网页总访问量的统计，我使用的是next主题，将配置文件设置好之后，几乎不显示统计数，为什么说是几乎不显示，因为刷新多次后，有一定的概率是可以显示的，具体原因不详。</p>
+<h3 id="问题分析"><a href="#问题分析" class="headerlink" title="问题分析"></a>问题分析</h3><h4 id="主题config-yml设置"><a href="#主题config-yml设置" class="headerlink" title="主题config.yml设置"></a>主题config.yml设置</h4><p><img src="https://i.loli.net/2021/04/22/azr2QYxWdph9K8f.jpg" alt="bk3.jpg"></p>
+<p>&emsp;&emsp;如图，如此设置，post_views是每篇文章的访问量，设置为false是因为我用了valine自带的文章字数统计功能，避免冲突，就关掉了。</p>
+<h4 id="分析代码"><a href="#分析代码" class="headerlink" title="分析代码"></a>分析代码</h4><p><img src="https://i.loli.net/2021/04/22/A63GsCZxBQpgYWO.jpg" alt="bk5.jpg"></p>
+<p> &emsp;&emsp;本地打开博客，f12检查一下，找到显示不蒜子的页脚位置可以发现不蒜子是生效的，之前一直以为是不蒜子不生效。但是被加上了一display：none的属性，被隐藏了，手动改为inline后，就显示在了页面上。至于为什么，目前不清楚。</p>
+<p><img src="https://i.loli.net/2021/04/22/TI8aPKYFnXw5tAN.jpg" alt="bk7.jpg"></p>
+<p>&emsp;&emsp;再打开代码，打开theme/next/layout/_third-party/statistics/busuanzi-counter.swig文件，检索busuanzi，找到显示不蒜子的地方，发现确实有display：none。</p>
+<p>&emsp;&emsp;我们再打开theme/next/layout/_macro/post.swig文件，同样检索busuanzi，也发现了应该显示的内容被display：none隐藏了：</p>
+<p><img src="https://i.loli.net/2021/04/22/PIZHNXkc1bMROqi.jpg" alt="bk4.jpg"></p>
+<h3 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h3><p>&emsp;&emsp;既然被隐藏了，我们干脆删掉它，大力出奇迹</p>
+<p><div class="note default"><p>首先删除busuanzi-counter.swig中的代码如下：</p></div></p>
+<p><img src="https://i.loli.net/2021/04/22/tcSj4FrUMy2qZiG.jpg" alt="bk1.jpg"></p>
+<div class="note default"><p>由于原来的不蒜子标题不显示文字，只显示个icon图标，因此我这里在源码中还加了标题文字，有需要的朋友可以参考一下</p></div>
+
+<div class="note default"><p>再删除post.swig中的代码如下：</p></div>
+
+<p><img src="https://i.loli.net/2021/04/22/DURCPvyOSYzZK2M.jpg" alt="bk2.jpg"></p>
+<h3 id="效果"><a href="#效果" class="headerlink" title="效果"></a>效果</h3><p>&emsp;&emsp;改完之后，我们三连 hexo clean    hexo g      hexo s去看下效果：</p>
+<p><img src="https://i.loli.net/2021/04/22/CQDfUimnZcFe42d.jpg" alt="bk6.jpg"></p>
+<p>&emsp;&emsp;我们发现diaplay属性变为了inline，不算子也显示正常了，至此，修改完毕。</p>
+<h3 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h3><p>&emsp;&emsp;因为修改的源码，后续升级主题可能会出问题，请慎重修改。</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined"></a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://solicoo.gitee.io/ning-blog/2021/04/22/%E5%85%B3%E4%BA%8E%E4%B8%8D%E8%92%9C%E5%AD%90%E4%B8%8D%E6%98%BE%E7%A4%BA%E8%AE%A1%E6%95%B0%E7%9A%84%E6%80%9D%E8%80%83/">http://solicoo.gitee.io/ning-blog/2021/04/22/关于不蒜子不显示计数的思考/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://solicoo.gitee.io/ning-blog" target="_blank">solicoo的博客</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/ning-blog/tags/%E4%B8%8D%E8%92%9C%E5%AD%90/">不蒜子</a></div><div class="post_share"><div class="social-share" data-image="/ning-blog/images/003.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button button--animated"><i class="fas fa-qrcode"></i> 打赏</div><div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="/ning-blog/images/wechat.jpg" target="_blank"><img class="post-qr-code-img" src="/ning-blog/images/wechat.jpg" alt="微信"/></a><div class="post-qr-code-desc">微信</div></li><li class="reward-item"><a href="/ning-blog/images/alipay.jpg" target="_blank"><img class="post-qr-code-img" src="/ning-blog/images/alipay.jpg" alt="支付宝"/></a><div class="post-qr-code-desc">支付宝</div></li></ul></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/ning-blog/2021/04/22/%E7%A8%8B%E5%BA%8F%E5%91%98%E5%A6%82%E4%BD%95%E4%BF%9D%E6%8C%81%E8%BA%AB%E4%BD%93%E5%81%A5%E5%BA%B7/"><img class="prev-cover" src="/ning-blog/images/003.jpg" onerror="onerror=null;src='/ning-blog/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">程序员如何保持身体健康</div></div></a></div><div class="next-post pull-right"><a href="/ning-blog/2021/04/21/%E5%BF%83%E5%AE%BD%E8%8A%B1%E8%87%AA%E5%BC%80/"><img class="next-cover" src="/ning-blog/images/003.jpg" onerror="onerror=null;src='/ning-blog/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">心宽花自开</div></div></a></div></nav><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div><div id="comment-switch"><span class="first-comment">Waline</span><span class="switch-btn"></span><span class="second-comment">Twikoo</span></div></div><div class="comment-wrap"><div><div id="waline-wrap"></div></div><div><div id="twikoo-wrap"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="card-info-avatar is-center"><img class="avatar-img" src="/ning-blog/images/avatar.png" onerror="this.onerror=null;this.src='/ning-blog/img/friend_404.gif'" alt="avatar"/><div class="author-info__name"></div><div class="author-info__description"><div><h2 style="color:orange">Solicoo</h2><p>你永远无法借助别人的翅膀，飞上你的天空</p></div></div></div><div class="card-info-data"><div class="card-info-data-item is-center"><a href="/ning-blog/archives/"><div class="headline">文章</div><div class="length-num">5</div></a></div><div class="card-info-data-item is-center"><a href="/ning-blog/tags/"><div class="headline">标签</div><div class="length-num">5</div></a></div><div class="card-info-data-item is-center"><a href="/ning-blog/categories/"><div class="headline">分类</div><div class="length-num">4</div></a></div></div><a class="button--animated" id="card-info-btn" target="_blank" rel="noopener" href="https://gitee.com/solicoo"><i class="fas fa-heart"></i><span>follow me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://gitee.com/solicoo" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="/ning-blog/1505061447@qq.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a><a class="social-icon" href="/ning-blog/1505061447" target="_blank" title="QQ"><i class="fab fa-qq"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn card-announcement-animation"></i><span>公告</span></div><div class="announcement_content"><div>欢迎来到我的博客<br>评论留言</div></div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%8E%AF%E5%A2%83"><span class="toc-number">1.</span> <span class="toc-text">环境</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%97%AE%E9%A2%98%E6%8F%8F%E8%BF%B0"><span class="toc-number">2.</span> <span class="toc-text">问题描述</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%97%AE%E9%A2%98%E5%88%86%E6%9E%90"><span class="toc-number">3.</span> <span class="toc-text">问题分析</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%BB%E9%A2%98config-yml%E8%AE%BE%E7%BD%AE"><span class="toc-number">3.1.</span> <span class="toc-text">主题config.yml设置</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%86%E6%9E%90%E4%BB%A3%E7%A0%81"><span class="toc-number">3.2.</span> <span class="toc-text">分析代码</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95"><span class="toc-number">4.</span> <span class="toc-text">解决方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%88%E6%9E%9C"><span class="toc-number">5.</span> <span class="toc-text">效果</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B3%A8%E6%84%8F"><span class="toc-number">6.</span> <span class="toc-text">注意</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/ning-blog/2021/04/22/%E7%A8%8B%E5%BA%8F%E5%91%98%E5%A6%82%E4%BD%95%E4%BF%9D%E6%8C%81%E8%BA%AB%E4%BD%93%E5%81%A5%E5%BA%B7/" title="程序员如何保持身体健康"><img src="/ning-blog/images/003.jpg" onerror="this.onerror=null;this.src='/ning-blog/img/404.jpg'" alt="程序员如何保持身体健康"/></a><div class="content"><a class="title" href="/ning-blog/2021/04/22/%E7%A8%8B%E5%BA%8F%E5%91%98%E5%A6%82%E4%BD%95%E4%BF%9D%E6%8C%81%E8%BA%AB%E4%BD%93%E5%81%A5%E5%BA%B7/" title="程序员如何保持身体健康">程序员如何保持身体健康</a><time datetime="2021-04-22T15:56:10.000Z" title="发表于 2021-04-22 23:56:10">2021-04-22</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/ning-blog/2021/04/22/%E5%85%B3%E4%BA%8E%E4%B8%8D%E8%92%9C%E5%AD%90%E4%B8%8D%E6%98%BE%E7%A4%BA%E8%AE%A1%E6%95%B0%E7%9A%84%E6%80%9D%E8%80%83/" title="next主题关于不蒜子不显示计数的思考"><img src="/ning-blog/images/003.jpg" onerror="this.onerror=null;this.src='/ning-blog/img/404.jpg'" alt="next主题关于不蒜子不显示计数的思考"/></a><div class="content"><a class="title" href="/ning-blog/2021/04/22/%E5%85%B3%E4%BA%8E%E4%B8%8D%E8%92%9C%E5%AD%90%E4%B8%8D%E6%98%BE%E7%A4%BA%E8%AE%A1%E6%95%B0%E7%9A%84%E6%80%9D%E8%80%83/" title="next主题关于不蒜子不显示计数的思考">next主题关于不蒜子不显示计数的思考</a><time datetime="2021-04-22T05:45:30.000Z" title="发表于 2021-04-22 13:45:30">2021-04-22</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/ning-blog/2021/04/21/%E5%BF%83%E5%AE%BD%E8%8A%B1%E8%87%AA%E5%BC%80/" title="心宽花自开"><img src="/ning-blog/images/003.jpg" onerror="this.onerror=null;this.src='/ning-blog/img/404.jpg'" alt="心宽花自开"/></a><div class="content"><a class="title" href="/ning-blog/2021/04/21/%E5%BF%83%E5%AE%BD%E8%8A%B1%E8%87%AA%E5%BC%80/" title="心宽花自开">心宽花自开</a><time datetime="2021-04-21T02:24:03.000Z" title="发表于 2021-04-21 10:24:03">2021-04-21</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/ning-blog/2021/04/16/%E4%BD%BF%E7%94%A8%E5%8E%9F%E7%94%9Fjs%E5%AE%9E%E7%8E%B0%E6%94%BE%E5%A4%A7%E9%95%9C%E6%95%88%E6%9E%9C/" title="使用js实现放大镜效果"><img src="/ning-blog/images/cover2.jpg" onerror="this.onerror=null;this.src='/ning-blog/img/404.jpg'" alt="使用js实现放大镜效果"/></a><div class="content"><a class="title" href="/ning-blog/2021/04/16/%E4%BD%BF%E7%94%A8%E5%8E%9F%E7%94%9Fjs%E5%AE%9E%E7%8E%B0%E6%94%BE%E5%A4%A7%E9%95%9C%E6%95%88%E6%9E%9C/" title="使用js实现放大镜效果">使用js实现放大镜效果</a><time datetime="2021-04-16T15:00:13.000Z" title="发表于 2021-04-16 23:00:13">2021-04-16</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/ning-blog/2021/04/15/%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8hexo%E6%A1%86%E6%9E%B6%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/" title="如何使用hexo框架搭建个人博客"><img src="/ning-blog/images/cover1.jpg" onerror="this.onerror=null;this.src='/ning-blog/img/404.jpg'" alt="如何使用hexo框架搭建个人博客"/></a><div class="content"><a class="title" href="/ning-blog/2021/04/15/%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8hexo%E6%A1%86%E6%9E%B6%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/" title="如何使用hexo框架搭建个人博客">如何使用hexo框架搭建个人博客</a><time datetime="2021-04-14T17:40:57.000Z" title="发表于 2021-04-15 01:40:57">2021-04-15</time></div></div></div></div></div></div></main><footer id="footer" style="background-image: url('/ning-blog/images/003.jpg')"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2021 By </div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text">Hi,welcome to my  <a  href="https://solicoo.gitee.io/ning-blog">blog</a>!</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">繁</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="algolia-search"><div class="search-dialog"><div class="search-dialog__title" id="algolia-search-title">Algolia</div><div id="algolia-input-panel"><div id="algolia-search-input"></div></div><hr/><div id="algolia-search-results"><div id="algolia-hits"></div><div id="algolia-pagination"></div><div id="algolia-stats"></div></div><span class="search-close-button"><i class="fas fa-times"></i></span></div><div id="search-mask"></div></div><div><script src="/ning-blog/js/utils.js"></script><script src="/ning-blog/js/main.js"></script><script src="/ning-blog/js/tw_cn.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.js"></script><script>function panguFn () {
+  if (typeof pangu === 'object') pangu.autoSpacingPage()
+  else {
+    getScript('https://cdn.jsdelivr.net/npm/pangu/dist/browser/pangu.min.js')
+      .then(() => {
+        pangu.autoSpacingPage()
+      })
+  }
+}
+
+function panguInit () {
+  if (false){
+    GLOBAL_CONFIG_SITE.isPost && panguFn()
+  } else {
+    panguFn()
+  }
+}
+
+document.addEventListener('DOMContentLoaded', panguInit)</script><script src="/ning-blog/js/search/algolia.js"></script><script>var preloader = {
+  endLoading: () => {
+    document.body.style.overflow = 'auto';
+    document.getElementById('loading-box').classList.add("loaded")
+  },
+  initLoading: () => {
+    document.body.style.overflow = '';
+    document.getElementById('loading-box').classList.remove("loaded")
+
+  }
+}
+window.addEventListener('load',preloader.endLoading())</script><div class="js-pjax"><script>if (document.getElementsByClassName('mermaid').length) {
+  if (window.mermaidJsLoad) mermaid.init()
+  else {
+    getScript('https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js').then(() => {
+      window.mermaidJsLoad = true
+      mermaid.initialize({
+        theme: 'default',
+      })
+      true && mermaid.init()
+    })
+  }
+}</script><script>function loadWaline () {
+  function initWaline () {
+    const waline = new Waline(Object.assign({
+      el: '#waline-wrap',
+      serverURL: 'https://solicoowaline.vercel.app/',
+      avatar: 'monsterid',
+      path: location.pathname,
+      emojiCDN: '',
+      emojiMaps: "",
+      visitor: false
+    }, "asdasdasd"))
+  }
+
+  if (typeof Waline === 'function') initWaline() 
+  else getScript('https://cdn.jsdelivr.net/npm/@waline/client/dist/Waline.min.js').then(initWaline)
+}
+
+if ('Waline' === 'Waline' || !true) {
+  if (true) btf.loadComment(document.getElementById('waline-wrap'),loadWaline)
+  else setTimeout(loadWaline, 0)
+} else {
+  function loadOtherComment () {
+    loadWaline()
+  }
+}</script><script>(()=>{
+  const $countDom = document.getElementById('twikoo-count')
+  const init = () => {
+    twikoo.init(Object.assign({
+      el: '#twikoo-wrap',
+      envId: 'twikoo-0gj8o73kedfc414e',
+      region: ''
+    }, null))
+  }
+
+  const getCount = () => {
+    twikoo.getCommentsCount({
+      envId: 'twikoo-0gj8o73kedfc414e',
+      region: '',
+      urls: [window.location.pathname],
+      includeReply: false
+    }).then(function (res) {
+      $countDom.innerText = res[0].count
+    }).catch(function (err) {
+      console.error(err);
+    });
+  }
+
+  const loadTwikoo = (bool = false) => {
+    if (typeof twikoo === 'object') {
+      init()
+      bool && $countDom && setTimeout(getCount,0)
+    } else {
+      getScript('https://cdn.jsdelivr.net/npm/twikoo/dist/twikoo.all.min.js').then(()=> {
+        init()
+        bool && $countDom && setTimeout(getCount,0)
+      })
+    }
+  }
+
+  if ('Waline' === 'Twikoo' || !true) {
+    if (true) btf.loadComment(document.getElementById('twikoo-wrap'), loadTwikoo)
+    else loadTwikoo(true)
+  } else {
+    window.loadOtherComment = () => {
+      loadTwikoo()
+    }
+  }
+})()</script></div><script src="https://cdn.jsdelivr.net/npm/blueimp-md5@2.17.0/js/md5.min.js"></script><script>window.addEventListener('load', () => {
+  const changeContent = (content) => {
+    if (content === '') return content
+
+    content = content.replace(/<img.*?src="(.*?)"?[^\>]+>/ig, '[图片]') // replace image link
+    content = content.replace(/<a[^>]+?href=["']?([^"']+)["']?[^>]*>([^<]+)<\/a>/gi, '[链接]') // replace url
+    content = content.replace(/<pre><code>.*?<\/pre>/gi, '[代码]') // replace code
+    content = content.replace(/<[^>]+>/g,"") // remove html tag
+
+    if (content.length > 150) {
+      content = content.substring(0,150) + '...'
+    }
+    return content
+  }
+
+  const getIcon = (icon, mail) => {
+    if (icon) return icon
+    let defaultIcon = '?d=monsterid'
+    let iconUrl = `https://gravatar.loli.net/avatar/${md5(mail.toLowerCase()) + defaultIcon}`
+    return iconUrl
+  }
+
+  const generateHtml = array => {
+    let result = ''
+
+    if (array.length) {
+      for (let i = 0; i < array.length; i++) {
+        result += '<div class=\'aside-list-item\'>'
+
+        if (true) {
+          const name = 'src'
+          result += `<a href='${array[i].url}' class='thumbnail'><img ${name}='${array[i].avatar}' alt='${array[i].nick}'></a>`
+        }
+
+        result += `<div class='content'>
+        <a class='comment' href='${array[i].url}'>${array[i].content}</a>
+        <div class='name'><span>${array[i].nick} / </span><time datetime="${array[i].date}">${btf.diffDate(array[i].date, true)}</time></div>
+        </div></div>`
+      }
+    } else {
+      result += '没有评论'
+    }
+
+    let $dom = document.querySelector('#card-newest-comments .aside-list')
+    $dom.innerHTML= result
+    window.lazyLoadInstance && window.lazyLoadInstance.update()
+    window.pjax && window.pjax.refresh($dom)
+  }
+
+  const getComment = () => {
+    const serverURL = 'https://hIORW1U9.api.lncldglobal.com'
+
+    var settings = {
+      "method": "GET",
+      "headers": {
+        "X-LC-Id": 'hIORW1U9wOlaq7ir85iqn4HK-MdYXbMMI',
+        "X-LC-Key": 'sI1dsvtXe9ulYmnkawMQmv5c',
+        "Content-Type": "application/json"
+      },
+    }
+
+    fetch(`${serverURL}/1.1/classes/Comment?limit=3&order=-createdAt`,settings)
+      .then(response => response.json())
+      .then(data => {
+        const valineArray = data.results.map(function (e) {
+          return {
+            'avatar': getIcon(e.QQAvatar, e.mail),
+            'content': changeContent(e.comment),
+            'nick': e.nick,
+            'url': e.url + '#' + e.objectId,
+            'date': e.updatedAt,
+          }
+        })
+        saveToLocal.set('valine-newest-comments', JSON.stringify(valineArray), 10/(60*24))
+        generateHtml(valineArray)
+      }).catch(e => {
+        const $dom = document.querySelector('#card-newest-comments .aside-list')
+        $dom.innerHTML= "无法获取评论，请确认相关配置是否正确"
+      }) 
+  }
+
+  const newestCommentInit = () => {
+    if (document.querySelector('#card-newest-comments .aside-list')) {
+      const data = saveToLocal.get('valine-newest-comments')
+      if (data) {
+        generateHtml(JSON.parse(data))
+      } else {
+        getComment()
+      }
+    }
+  }
+
+  newestCommentInit()
+  document.addEventListener('pjax:complete', newestCommentInit)
+})</script><link rel="stylesheet" href="css/mm.css"><script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.js"></script><script data-pjax src="js/mm.js"></script><script defer="defer" id="fluttering_ribbon" mobile="true" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/canvas-fluttering-ribbon.min.js"></script><script id="canvas_nest" defer="defer" color="255,255,255" opacity="0.8" zIndex="-1" count="99" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/canvas-nest.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = false;
+POWERMODE.mobile = false;
+document.body.addEventListener('input', POWERMODE);
+</script><script id="click-show-text" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/click-show-text.min.js" data-mobile="false" data-text="富强,民主,文明,和谐,自由,民主,公正,法制,爱国,敬业,诚信,友善" data-fontsize="16px" data-random="true" async="async"></script><script>((window.gitter = {}).chat = {}).options = {
+  room: 'solicooo/community',
+};
+
+if (false) {
+  function chatBtnHide () {
+    document.getElementsByClassName('gitter-open-chat-button')[0].style.display= 'none'
+  }
+
+  function chatBtnShow () {
+    document.getElementsByClassName('gitter-open-chat-button')[0].style.display= 'block'
+  }
+}
+</script><script src="https://sidecar.gitter.im/dist/sidecar.v1.js" async="async" defer="defer"></script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script><script src="https://cdn.jsdelivr.net/gh/metowolf/MetingJS@1.2/dist/Meting.min.js"></script><script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js"></script><script>let pjaxSelectors = [
+  'title',
+  '#config-diff',
+  '#body-wrap',
+  '#rightside-config-hide',
+  '#rightside-config-show',
+  '.js-pjax'
+]
+
+if (false) {
+  pjaxSelectors.unshift('meta[property="og:image"]', 'meta[property="og:title"]', 'meta[property="og:url"]')
+}
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof chatBtnFn === 'function' && chatBtnFn()
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // Analytics
+  if (false) {
+    MtaH5.pgv()
+  }
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+
+  typeof preloader === 'object' && preloader.endLoading()
+})
+
+
+document.addEventListener('pjax:send', function () {
+  typeof preloader === 'object' && preloader.initLoading()
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+})
+
+document.addEventListener('pjax:error', (e) => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><!-- hexo injector body_end start --><script data-pjax>function history_calendar_injector_config(){
+                var parent_div_git = document.getElementsByClassName('sticky_layout')[0];
+                var item_html = '<div class="card-widget card-history"><div class="card-content"><div class="item-headline"><i class="fas fa-clock fa-spin"></i><span>那年今日</span></div><div id="history-baidu" style="height: 100px;overflow: hidden"><div class="history_swiper-container" id="history-container" style="width: 100%;height: 100%"><div class="swiper-wrapper" id="history_container_wrapper" style="height:15px"></div></div></div></div>';
+                console.log('已挂载history_calendar')
+                // parent_div_git.innerHTML=item_html+parent_div_git.innerHTML // 无报错，但不影响使用(支持pjax跳转)
+                parent_div_git.insertAdjacentHTML("afterbegin",item_html) // 有报错，但不影响使用(支持pjax跳转)
+            }if( document.getElementsByClassName('sticky_layout')[0] && (location.pathname ==='all'|| 'all' ==='all')){
+
+            history_calendar_injector_config()
+        } </script><script data-pjax  src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script><script data-pjax src="https://cdn.jsdelivr.net/gh/Zfour/Butterfly-card-history/baiduhistory/js/main.js"></script><script data-pjax>function electric_clock_injector_config(){
+                var parent_div_git = document.getElementsByClassName('sticky_layout')[0];
+                var item_html = '<div class="card-widget card-clock"><div class="card-glass"><div class="card-background"><div class="card-content"><div id="hexo_electric_clock"><img id="card-clock-loading" src="https://cdn.jsdelivr.net/gh/Zfour/Butterfly-clock/clock/images/weather/loading.gif" style="height: 120px; width: 100%;" data-ll-status="loading" class="entered loading"></div></div></div></div></div>';
+                console.log('已挂载electric_clock')
+                // parent_div_git.innerHTML=item_html+parent_div_git.innerHTML // 无报错，但不影响使用(支持pjax跳转)
+                parent_div_git.insertAdjacentHTML("afterbegin",item_html) // 有报错，但不影响使用(支持pjax跳转)
+            }if( document.getElementsByClassName('sticky_layout')[0] && (location.pathname ==='all'|| 'all' ==='all')){
+
+            electric_clock_injector_config()
+        } </script><script src="https://pv.sohu.com/cityjson?ie=utf-8"></script><script data-pjax  src="https://cdn.jsdelivr.net/gh/Zfour/hexo-electric-clock@1.0.6/clock.js"></script><!-- hexo injector body_end end --><script src="/ning-blog/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/ning-blog/live2dw/assets/assets/hijiki.model.json"},"display":{"position":"right","width":200,"height":420},"mobile":{"show":true},"log":false});</script></body></html>
