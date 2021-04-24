@@ -5118,12 +5118,6 @@ _:future,
 #waline .vcards .vcard .vcontent.expand:after {
   z-index: 22;
 }
-#waline-wrap textarea {
-  background: url("#09c") 100% 100% no-repeat;
-}
-#waline-wrap textarea:focus {
-  background-image: none;
-}
 .fireworks {
   position: fixed;
   top: 0;
